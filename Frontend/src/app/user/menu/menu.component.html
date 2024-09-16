@@ -1,0 +1,64 @@
+<div class="container-fluid shadow-effect" id="user-section">
+     
+       
+
+        <div class="categories">
+            <h2 style="text-align: center;">Select your Category</h2>
+            
+            <div class="outterContainer" *ngIf="getCategoryList.length > 0; else noBooksTemplate">  
+      
+                <div class="container">
+                    <div class="card" [value]="100" (click)="selectAllItems()">       
+                        <div class="card_image">
+                            <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="Item Image" />
+                        </div>
+                        <div class="card_title title-white">
+                            <p >All Item</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card" *ngFor="let item of getCategoryList"  (click)="selectCategory(item.value)">        <!--[(ngModel)]="category"-->
+                        <div class="card_image">
+                            <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="Item Image" />
+                        </div>
+                        <div class="card_title title-white">
+                            <p >{{item?.name}}</p>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+            
+            <ng-template #noBooksTemplate>
+                <div class="centered">
+                    No items are available in the list.
+                </div>
+            </ng-template>
+    
+        </div>
+    
+        
+    
+         <!-- Success message -->
+         <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
+            {{ successMessage }}
+        </div>
+       <div class="items">
+            <div class="card2" *ngFor="let item of categoryItems;">
+                <div class="card3" *ngIf="categoryItems.length>0">
+                    <div class="card-image2"><img [src]= "item.itemImage || 'pngwing.com (5).png'" alt="item image"></div>
+                    <div class="category2"> {{item.itemName}} </div>
+                    <div class="heading2"> {{item.description}}</div>
+                    <h6>Price: {{item.price}}</h6>
+                    <button class="buttons" (click)="addToCart(item)">Add To Cart</button>
+                </div>
+            </div>
+    
+        </div> 
+    
+        <ng-template #noItemsTemplate>
+            <div class="centered">
+                No items available for the selected category.
+            </div>
+        </ng-template> 
+
+</div>

@@ -1,0 +1,29 @@
+<div class="container-fluid shadow-effect" id="user-section">
+    <h1 style="text-align: center;">Your Orders </h1>
+    
+
+    <div *ngIf="orderList.length>0" class="centered">
+        <table>
+            <tr>
+                <th>Order Date</th>
+                <th>Total price</th>
+                <th>Order Status</th>
+                <th>Payment Status</th>
+                <th>Customer Id</th>
+                <th>Custmer Name</th>
+            </tr>
+            <tr *ngFor="let order of orderList">
+                <td>{{getDate(order?.orderDate)}}</td>
+                <td>{{order?.totalPrice}}</td>
+                <td>{{order?.orderStatus === 'success' ? 'Order not confirmed' : order?.orderStatus}}</td>
+                <td>{{order?.paymentStatus === 'success' ? 'UnPaid' : order?.paymentStatus}}</td>
+                <td>{{order?.customer?.customerId}}</td>
+                <td>{{order?.customer?.firstName}} {{order?.customer?.lastName}}</td>
+                <td><div class="buttons" *ngIf="order?.paymentStatus !== 'PAID'"> <button (click)="addPayment(order)" mat-raised-button color="primary" style="background-color: rgb(16, 40, 85) ;color:white;">Payment</button></div></td>
+                <td><div class="buttons" *ngIf="order?.paymentStatus !== 'PAID'"> <button (click)="deleteOrder(order)" mat-raised-button color="primary" style="background-color: rgb(225, 58, 58) ;color:white;">Cancle Order</button></div></td>
+            </tr>
+        </table>
+    </div>
+
+ 
+</div>

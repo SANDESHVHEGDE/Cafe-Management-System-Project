@@ -1,0 +1,212 @@
+<!-- <div class="register-tab">
+    <div class="main centered">
+        <h1>Register</h1>
+    </div>
+    <div class="main centered">
+
+        <table>
+            <tr>
+          
+                <td class="label">FirstName</td>
+                <td>
+                    <input type="text" [(ngModel)]="firstName">
+                </td>
+            </tr>
+            <tr>
+                
+                <td class="label">LastName</td>
+                <td>
+                    <input type="text" [(ngModel)]="lastName">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Email</td>
+                <td>
+                    <input type="text" [(ngModel)]="email">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">DOB</td>
+                <td>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                            (dateChange)="setDOB($event)">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="information" style="font-size: smaller;">
+                    (Date should be in 'yyyy-mm-dd' format)
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Gender</td>
+                <td>
+                    <input type="radio" name="male" value="male" [(ngModel)]="gender"> Male
+                    <input type="radio" name="female" value="female" [(ngModel)]="gender"> female
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">Address</td>
+                <td>
+                    <textarea type="text" [(ngModel)]="address"></textarea>
+                </td>
+            </tr>
+ 
+            <tr>
+                <td class="label">Phone</td>
+                <td>
+                    <input type="text" [(ngModel)]="phone">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">District</td>
+                <td>
+                    <input type="text" [(ngModel)]="district">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">ZipCode</td>
+                <td>
+                    <input type="text" [(ngModel)]="zipcode">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">State</td>
+                <td>
+                    <input type="text" [(ngModel)]="state">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Password</td>
+                <td>
+                    <input type="password" [(ngModel)]="password">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="information" style="font-size: smaller;">
+                    (Password should contains 1 Uppercase, 1 Digit and should be 8 character long)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div class="centered"> <button (click)="signup()" mat-raised-button color="primary"
+    style="background-color:rgb(16, 40, 85) ;color:rgb(249, 229, 254);">Signup</button></div>
+
+ 
+
+</div> -->
+
+
+
+<div class="container-fluid">
+    <form>
+      <h2>Register now</h2>
+      
+      <div class="row"> 
+        <div class="col-5 mb-5">
+          <label for="firstname" class="form-label">First Name: </label>
+          <input type="text" name="firstname" [(ngModel)]="firstName">
+        </div>
+  
+        <div class="col-5 mb-5">
+          <label for="lastname" class="form-label">Last Name: </label>
+          <input type="text" name="lastname" [(ngModel)]="lastName" >
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-5 mb-5">
+          <label for="dob" class="form-label">Date Of Birth: </label>
+          <input type="date" name="dob" [(ngModel)]="dob">
+        </div>
+  
+        <div class="col-5 mb-5">
+          <label for="email" class="form-label">Email: </label>
+          <input type="text" name="email" [(ngModel)]="email">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-5 mb-5">
+          <label for="phoneNo" class="form-label">Phone Number: </label>
+          <input type="text" name="phoneNo" [(ngModel)]="phone" >
+        </div>
+  
+        <div class="col-5 mb-5">
+          <label for="gender" class="form-label">Gender: </label>
+          <select id="dropdown" name="gender" [(ngModel)]="gender">
+              <option disabled selected value>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-5 mb-5">
+          <label for="address" class="form-label">Address: </label>
+          <input type="text" name="address" [(ngModel)]="address">
+        </div>
+  
+        <div class="col-5 mb-5">
+          <label for="state" class="form-label">State: </label>
+          <input type="text" name="state" [(ngModel)]="state">
+  
+        </div>
+      </div>
+   
+  
+      <div class="row">
+        <div class="col-5 mb-5">
+          <label for="district" class="form-label">District: </label>
+          <input type="text" name="district" [(ngModel)]="district">
+  
+        </div>
+  
+        <div class="col-5 mb-5">
+          <label for="zipcode" class="form-label">Zip code: </label>
+          <input type="text" name="zipcode" [(ngModel)]="zipcode">
+        </div>
+      </div>
+  
+      <div class="col-5 mb-5">
+        <label for="password" class="form-label">Password: </label>
+        <input type="password" name="password" [(ngModel)]="password" 
+               (input)="validatePassword()" (focus)="onPasswordFocus(true)" (blur)="onPasswordFocus(false)">
+        <p [ngClass]="{'valid-password': isPasswordValid, 'invalid-password': !isPasswordValid && isPasswordFocused}"
+           style="font-size: 12px;">
+          (Password should contain 1 Uppercase, 1 Digit and should be 8 characters long)
+        </p>
+      </div>
+  
+  
+      <!-- <div class="row">
+        <div class="col-5 mb-5">
+          <label for="password" class="form-label">Password: </label>
+          <input type="password" name="password" [(ngModel)]="password">
+          <p style="font-size: 12px;">(Password should contains 1 Uppercase, 1 Digit and should be 8 character long)<p>
+        </div> -->
+  
+        <!-- <div class="col-5 mb-5">
+          <label for="confirmPassword" class="form-label">Confirm Password: </label>
+          <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" >
+        </div>
+      </div> -->
+      
+      <div class="bottom">
+        <button class="btn btn-secondary" type="reset" (click)="signup()">Submit</button>
+        <button class="btn btn-secondary" type="reset">Reset</button>
+      </div>
+      
+    </form>
+</div> 

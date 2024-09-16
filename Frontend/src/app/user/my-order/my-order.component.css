@@ -1,0 +1,52 @@
+.container-fluid {
+  width: 98%;
+  padding: 30px;
+  min-height: 670px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.container{
+  margin-top: 50px;
+}
+
+
+.shadow-effect {
+  box-shadow: 14px 14px 20px #cfcece, -14px -14px 20px rgb(255, 255, 255);
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+.order-info {
+  margin-bottom: 20px;
+}
+.section {
+  margin-bottom: 15px; 
+}
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+.product-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+.product-list th, .product-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.product-list th {
+  background-color: #f2f2f2;
+}
+
+
+.contain-order-details{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}

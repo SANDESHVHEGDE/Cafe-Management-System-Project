@@ -1,0 +1,54 @@
+<div class="container-fluid shadow-effect" id="user-section">
+    <h1 style="text-align: center;">Cart</h1>
+  
+    <!-- <div class="items" *ngIf="cartItems && cartItems.length > 0; else noItemsTemplate">
+        <div *ngFor="let cartItem of cartItems" class="card2">
+          <div class="card3">
+            <div class="card-image2">
+              <img [src]="cartItem.item.itemImage" alt="item image">
+            </div>
+            <div class="category2">Item Name: </div>
+            <div class="heading2">Description: </div>
+            <h6>Price:</h6>
+            <h6>Total Price:</h6>
+            <div>{{cartItem?.price}}</div>
+          </div>
+        </div>
+    </div> -->
+
+    <div class="items" *ngIf="cartItems && cartItems.length > 0; else noItemsTemplate">
+        <div *ngFor="let cartItem of cartItems" class="card2">
+          <div class="card3">
+            <div class="card-image2">
+              <img [src]="cartItem.item.itemImage" alt="item image">
+            </div>
+            <div class="category2">{{ cartItem?.item?.itemName }}</div>
+            <h6>Price: {{ cartItem?.price }}</h6>
+            <h6> 
+                <button (click)="decrementQuantity(cartItem)">-</button>
+                {{ cartItem.quantity }}
+                <button (click)="incrementQuantity(cartItem)">+</button>
+              </h6>
+            <h6>Quantity: {{ cartItem?.quantity }}</h6>
+            <h6>Total Price: {{ cartItem?.totalPrice }}</h6>
+            <div class="deleteCart">
+              <button class="delete" (click)="deleteCart(cartItem)" >delete</button>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+
+  
+    <ng-template #noItemsTemplate>
+      <div class="centered">
+        No items available in the cart.
+      </div>
+    </ng-template> 
+
+    <div  class="orderButton">
+        <button (click)="insertOrder()">Place Order</button>
+    </div>
+     
+  </div>
+   

@@ -1,0 +1,509 @@
+<div class="container-fluid">
+  <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+    <h2>Register now</h2>
+    
+    <div class="row"> 
+      <div class="col-5 mb-5">
+        <label for="firstname" class="form-label">First Name: </label>
+        <input type="text" name="firstname" [(ngModel)]="firstName" #firstname="ngModel" class="form-control" required minlength="3"
+               [ngClass]="{'is-invalid': f.submitted && firstname.invalid}">
+        <div *ngIf="firstname.invalid && (firstname?.dirty || firstname?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="firstname.errors?.['required']">First Name is required.</div>
+          <div *ngIf="firstname.errors?.['minlength']">Minimum length is 3 characters.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="lastname" class="form-label">Last Name: </label>
+        <input type="text" name="lastname" [(ngModel)]="lastName" #lastname="ngModel" class="form-control" required minlength="3"
+               [ngClass]="{'is-invalid': f.submitted && lastname.invalid}">
+        <div *ngIf="lastname.invalid && (lastname?.dirty || lastname?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="lastname.errors?.['required']">Last Name is required.</div>
+          <div *ngIf="lastname.errors?.['minlength']">Minimum length is 3 characters.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="dob" class="form-label">Date Of Birth: </label>
+        <input type="date" name="dob" [(ngModel)]="dob" #dob="ngModel" class="form-control" required
+               [ngClass]="{'is-invalid': f.submitted && dob.invalid}">
+        <div *ngIf="dob.invalid && (dob?.dirty || dob?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="dob.errors?.['required']">Date Of Birth is required.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="email" class="form-label">Email: </label>
+        <input type="email" name="email" [(ngModel)]="email" #email="ngModel" class="form-control" required
+               [ngClass]="{'is-invalid': f.submitted && email.invalid}">
+        <div *ngIf="email.invalid && (email?.dirty || email?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Invalid email address.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="phoneNo" class="form-label">Phone Number: </label>
+        <input type="text" name="phoneNo" [(ngModel)]="phone" #phoneNo="ngModel" class="form-control" required maxlength="10"
+               [ngClass]="{'is-invalid': f.submitted && phoneNo.invalid}">
+        <div *ngIf="phoneNo.invalid && (phoneNo?.dirty || phoneNo?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="phoneNo.errors?.['required']">Phone number is required.</div>
+          <div *ngIf="phoneNo.errors?.['maxlength']">Maximum length is 10 numbers.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="gender" class="form-label">Gender: </label>
+        <select id="dropdown" name="gender" [(ngModel)]="gender" #gender="ngModel" class="form-control" required
+                [ngClass]="{'is-invalid': f.submitted && gender.invalid}">
+            <option disabled value>Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <div *ngIf="gender.invalid && (gender?.dirty || gender?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="gender.errors?.['required']">Gender is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="address" class="form-label">Address: </label>
+        <input type="text" name="address" [(ngModel)]="address" #address="ngModel" class="form-control" required minlength="2"
+               [ngClass]="{'is-invalid': f.submitted && address.invalid}">
+        <div *ngIf="address.invalid && (address?.dirty || address?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="address.errors?.['required']">Address is required.</div>
+          <div *ngIf="address.errors?.['minlength']">Minimum length is 2 characters.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="state" class="form-label">State: </label>
+        <input type="text" name="state" [(ngModel)]="state" #state="ngModel" class="form-control" required 
+               [ngClass]="{'is-invalid': f.submitted && state.invalid}">
+        <div *ngIf="state.invalid && (state?.dirty || state?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="state.errors?.['required']">State is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="district" class="form-label">District: </label>
+        <input type="text" name="district" [(ngModel)]="district" #district="ngModel" class="form-control" required 
+               [ngClass]="{'is-invalid': f.submitted && district.invalid}">
+        <div *ngIf="district.invalid && (district?.dirty || district?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="district.errors?.['required']">District is required.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="pincode" class="form-label">Pin code: </label>
+        <input type="text" name="pincode" [(ngModel)]="pincode" #pincode="ngModel" class="form-control" required 
+               [ngClass]="{'is-invalid': f.submitted && pincode.invalid}">
+        <div *ngIf="pincode.invalid && (pincode?.dirty || pincode?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="pincode.errors?.['required']">Pin code is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="password" class="form-label">Password: </label>
+        <input type="password" name="password" [(ngModel)]="password" #password="ngModel" class="form-control" minlength="6" maxlength="16" required 
+               [ngClass]="{'is-invalid': f.submitted && password.invalid}">
+        <div *ngIf="password.invalid && (password?.dirty || password?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+          <div *ngIf="password.errors?.['minlength']">Min length is 6 characters.</div>
+          <div *ngIf="password.errors?.['maxlength']">Max length is 16 characters.</div>
+        </div>
+      </div>
+
+
+    </div>
+    
+    <div class="form-check mb-5">
+      <input type="checkbox" name="acceptTerms" [(ngModel)]="acceptTerms" #acceptTerms="ngModel" class="form-check-input" required 
+             [ngClass]="{'is-invalid': f.submitted && acceptTerms.invalid}">
+      <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions </label>
+      <div *ngIf="acceptTerms.invalid && (acceptTerms?.dirty || acceptTerms?.touched || f.submitted)" class="invalid-feedback">
+        <div *ngIf="acceptTerms.errors?.['required']">You must accept the terms & conditions.</div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <input type="submit" value="Submit" class="btn btn-primary" (click)="signup">
+      <button class="btn btn-secondary" type="reset">Reset</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="container-fluid">
+  <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+    <h2>Register now</h2>
+    
+    <div class="row"> 
+      <div class="col-5 mb-5">
+        <label for="firstname" class="form-label">First Name: </label>
+        <input type="text" name="firstname" [(ngModel)]="firstName" #firstname="ngModel" class="form-control" required minlength="3"
+                      [ngClass]="{'is-invalid': f.submitted && firstname.invalid}" >
+        <div *ngIf="firstname.invalid && (firstname?.dirty || firstname?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="firstname.errors?.['required']">First Name is required.</div>
+          <div *ngIf="firstname.errors?.['minlength']">Minimum length is 3 characters.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="lastname" class="form-label">Last Name: </label>
+        <input type="text" name="lastname" [(ngModel)]="lastName" #lastname="ngModel" class="form-control" required minlength="3"
+                      [ngClass]="{'is-invalid': f.submitted && lastname.invalid}" >
+        <div *ngIf="lastname.invalid && (lastname?.dirty || lastname?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="lastname.errors?.['required']">Last Name is required.</div>
+          <div *ngIf="lastname.errors?.['minlength']">Minimum length is 3 characters.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="dob" class="form-label">Date Of Birth: </label>
+        <input type="date" name="dob" [(ngModel)]="dob"  #dob="ngModel" class="form-control" required
+                      [ngClass]="{'is-invalid': f.submitted && dob.invalid}" >
+        <div *ngIf="dob.invalid && (dob?.dirty || dob?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="dob.errors?.['required']">Date Of Birth is required.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="email" class="form-label">Email: </label>
+        <input type="text" name="email" [(ngModel)]="email" #email="ngModel" class="form-control" required minlength="3"
+                      [ngClass]="{'is-invalid': f.submitted && email.invalid}" >
+        <div *ngIf="email.invalid && (email?.dirty || email?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Invalid email address.</div>
+        </div>
+      </div>
+    </div>
+
+    Additional fields 
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="phoneNo" class="form-label">Phone Number: </label>
+        <input type="text" name="phoneNo" [(ngModel)]="phone" #phoneNo="ngModel" class="form-control" required maxlength="10"
+                      [ngClass]="{'is-invalid': f.submitted && phoneNo.invalid}" >
+        <div *ngIf="phoneNo.invalid && (phoneNo?.dirty || phoneNo?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="phoneNo.errors?.['required']">Phone number is required.</div>
+          <div *ngIf="phoneNo.errors?.['maxlength']">Maximum length is 10 numbers.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="gender" class="form-label">Gender: </label>
+        <select id="dropdown" name="gender" [(ngModel)]="gender" #gender="ngModel" class="form-control" required
+                      [ngClass]="{'is-invalid': f.submitted && gender.invalid}" >
+            <option disabled selected value>Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <div *ngIf="gender.invalid && (gender?.dirty || gender?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="gender.errors?.['required']">Gender is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="address" class="form-label">Address: </label>
+        <input type="text" name="address" [(ngModel)]="address"  #address="ngModel" class="form-control" required minlength="2"
+                      [ngClass]="{'is-invalid': f.submitted && address.invalid}" >
+        <div *ngIf="address.invalid && (address?.dirty || address?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="address.errors?.['required']">Address is required.</div>
+          <div *ngIf="address.errors?.['minlength']">Minimum length is 2 characters.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="state" class="form-label">State: </label>
+        <input type="text" name="state" [(ngModel)]="state"  #state="ngModel" class="form-control" required 
+                      [ngClass]="{'is-invalid': f.submitted && state.invalid}" >
+        <div *ngIf="state.invalid && (state?.dirty || state?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="state.errors?.['required']">State is required.</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="district" class="form-label">District: </label>
+        <input type="text" name="district" [(ngModel)]="district"  #district="ngModel" class="form-control" required 
+                      [ngClass]="{'is-invalid': f.submitted && district.invalid}" >
+        <div *ngIf="district.invalid && (district?.dirty || district?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="district.errors?.['required']">district is required.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="pincode" class="form-label">Pin code: </label>
+        <input type="text" name="pincode" [(ngModel)]="pincode"  #pincode="ngModel" class="form-control" required 
+                      [ngClass]="{'is-invalid': f.submitted && pincode.invalid}" >
+        <div *ngIf="pincode.invalid && (pincode?.dirty || pincode?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="pincode.errors?.['required']">pin code is required.</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-5 mb-5">
+        <label for="password" class="form-label">Password: </label>
+        <input type="password" name="password" [(ngModel)]="password" #password="ngModel" class="form-control" minlength="6" maxlength="16" required 
+                      [ngClass]="{'is-invalid': f.submitted && password.invalid}">
+        <div *ngIf="password.invalid && (password?.dirty || password?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+          <div *ngIf="password.errors?.['minlength']">Min length is 6 characters.</div>
+          <div *ngIf="password.errors?.['maxlength']">Max length is 16 characters.</div>
+        </div>
+      </div>
+
+      <div class="col-5 mb-5">
+        <label for="confirmPassword" class="form-label">Confirm Password: </label>
+        <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmPassword="ngModel" class="form-control" 
+                      [ngClass]="{'is-invalid': f.submitted && confirmPassword.invalid}" required 
+                      [appMatchPassword]="['password','confirmPassword']">
+        <div *ngIf="confirmPassword.invalid && (confirmPassword?.dirty || confirmPassword?.touched || f.submitted)" class="invalid-feedback">
+          <div *ngIf="confirmPassword.errors?.['required']">Password is required.</div>
+          <div *ngIf="confirmPassword.errors?.['passwordMismatch']">Password does not match..</div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="form-check mb-5">
+      <input type="checkbox" name="acceptTerms" [(ngModel)]="acceptTerms" #acceptTerms="ngModel" class="form-check-input" required 
+                    [ngClass]="{'is-invalid': f.submitted && acceptTerms.invalid}">
+      <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions </label>
+      <div *ngIf="acceptTerms.invalid && (acceptTerms?.dirty || acceptTerms?.touched || f.submitted)" class="invalid-feedback">
+        <div *ngIf="acceptTerms.errors?.['required']">You must accept the terms & conditions.</div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <input type="submit" value="Submit" class="btn btn-primary">
+      <button class="btn btn-secondary" type="reset">Reset</button>
+    </div>
+  </form>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid">
+    <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+        <h2>Register now</h2>
+        <div class="row"> 
+          <div class="col-5 mb-5">
+            <label for="firstname" class="form-label">First Name: </label>
+            <input type="text" name="firstname" placeholder="firstname" ngModel #firstname="ngModel" class="form-control" required minlength="3"
+                          [ngClass]="{'is-invalid': f.submitted && firstname.invalid}" > 
+            <div *ngIf="firstname.invalid && (firstname?.dirty || firstname?.touched || f.submitted)" class="invalid-feedback">
+              <div *ngIf="firstname.errors?.['required']">First Name is required.</div>
+              <div *ngIf="firstname.errors?.['minlength']">minimum length is 3 characters.</div>
+            </div>
+          </div>
+  
+          <div class="col-5 mb-5">
+            <label for="lastname" class="form-label">Last Name: </label>
+            <input type="text" name="lastname" placeholder="lastname" ngModel #lastname="ngModel" class="form-control" required minlength="3"
+                          [ngClass]="{'is-invalid': f.submitted && lastname.invalid}" >
+            <div *ngIf="lastname.invalid && (lastname?.dirty || lastname?.touched || f.submitted)" class="invalid-feedback">
+              <div *ngIf="lastname.errors?.['required']">Last Name is required.</div>
+              <div *ngIf="lastname.errors?.['minlength']">minimum length is 3 characters.</div>
+              <div *ngIf="lastname.errors?.['maxlength']">maxlength length is 25 characters.</div>
+            </div>
+          </div>
+        </div>
+  
+         <div class="row">
+            <div class="col-5 mb-5">
+              <label for="dob" class="form-label">Date Of Birth: </label>
+              <input type="date" name="dob" placeholder="Date of birth"  ngModel #dob="ngModel" class="form-control"  required
+                            [ngClass]="{'is-invalid': f.submitted && dob.invalid}" >
+              <div *ngIf="dob.invalid && (dob?.dirty || dob?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="dob.errors?.['required']">Date Of Birth is required.</div>
+              </div> 
+
+
+              </div>
+           <div class="col-5 mb-5">
+              <label for="email" class="form-label">Email: </label>
+              <input type="text" name="email" placeholder="email@gmail.com" ngModel #email="ngModel" class="form-control" required email
+                            [ngClass]="{'is-invalid': f.submitted && email.invalid}" >
+              <div *ngIf="email.invalid && (email?.dirty || email?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="email.errors?.['required']">Email is required.</div>
+                <div *ngIf="email.errors?.['email']">Invalid email address.</div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-5 mb-5">
+              <label for="phoneNo" class="form-label">Phone Number: </label>
+              <input type="text" name="phoneNo" placeholder="phone number."  ngModel #phoneNo="ngModel" class="form-control" required maxlength="10"
+                            [ngClass]="{'is-invalid': f.submitted && phoneNo.invalid}" >
+              <div *ngIf="phoneNo.invalid && (phoneNo?.dirty || phoneNo?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="phoneNo.errors?.['required']">phone number is required.</div>
+                <div *ngIf="phoneNo.errors?.['maxlength']">maxlength length is 10 numbers.</div>
+              </div>
+            </div>
+  
+            <div class="col-5 mb-5">
+              <label for="gender" class="form-label">Gender: </label>
+              <select id="dropdown" name="gender" ngModel #gender="ngModel" class="form-control" required
+                            [ngClass]="{'is-invalid': f.submitted && gender.invalid}" >
+                  <option disabled selected value>Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+              </select>
+              <div *ngIf="gender.invalid && (gender?.dirty || gender?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="gender.errors?.['required']">gender is required.</div>
+              </div>
+            </div>
+          </div>
+            
+  
+          <div class="row">
+            <div class="col-5 mb-5">
+              <label for="address" class="form-label">Address: </label>
+              <input type="text" name="address" placeholder="address"  ngModel #address="ngModel" class="form-control" required minlength="2"
+                            [ngClass]="{'is-invalid': f.submitted && address.invalid}" >
+              <div *ngIf="address.invalid && (address?.dirty || address?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="address.errors?.['required']">address is required.</div>
+                <div *ngIf="address.errors?.['minlength']">minimum length is 2 characters.</div>
+              </div>
+            </div>
+  
+            <div class="col-5 mb-5">
+              <label for="state" class="form-label">State: </label>
+              <input type="text" name="state" placeholder="state"  ngModel #state="ngModel" class="form-control" required 
+                            [ngClass]="{'is-invalid': f.submitted && state.invalid}" >
+              <div *ngIf="state.invalid && (state?.dirty || state?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="state.errors?.['required']">State is required.</div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-5 mb-5">
+              <label for="district" class="form-label">District: </label>
+              <input type="text" name="district" placeholder="district"  ngModel #district="ngModel" class="form-control" required 
+                            [ngClass]="{'is-invalid': f.submitted && district.invalid}" >
+              <div *ngIf="district.invalid && (district?.dirty || district?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="district.errors?.['required']">district is required.</div>
+              </div>
+            </div>
+  
+            <div class="col-5 mb-5">
+              <label for="pincode" class="form-label">Pin code: </label>
+              <input type="text" name="pincode" placeholder="pin code"  ngModel #pincode="ngModel" class="form-control" required 
+                            [ngClass]="{'is-invalid': f.submitted && pincode.invalid}" >
+              <div *ngIf="pincode.invalid && (pincode?.dirty || pincode?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="pincode.errors?.['required']">pin code is required.</div>
+              </div>
+            </div>
+          </div>
+            
+        
+          <div class="row">
+            <div class="col-5 mb-5">
+              <label for="password" class="form-label">Password: </label>
+              <input type="password" name="password" ngModel #password="ngModel" class="form-control" minlength="6" maxlength="16" required 
+                            [ngClass]="{'is-invalid': f.submitted && password.invalid}">
+              <div *ngIf="password.invalid && (password?.dirty || password?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="password.errors?.['required']">Password is required.</div>
+                <div *ngIf="password.errors?.['minlength']">Min length is 6 characters.</div>
+                <div *ngIf="password.errors?.['maxlength']">Max length is 16 characters.</div>
+              </div>
+            </div>
+  
+            <div class="col-5 mb-5">
+              <label for="confirmPassword" class="form-label">Confirm Password: </label>
+              <input type="password" name="confirmPassword" ngModel #confirmPassword="ngModel" class="form-control" 
+                            [ngClass]="{'is-invalid': f.submitted && confirmPassword.invalid}" required 
+                            [appMatchPassword]="['password','confirmPassword']">
+              <div *ngIf="confirmPassword.invalid && (confirmPassword?.dirty || confirmPassword?.touched || f.submitted)" class="invalid-feedback">
+                <div *ngIf="confirmPassword.errors?.['required']">Password is required.</div>
+                <div *ngIf="confirmPassword.errors?.['passwordMismatch']">Password does not match..</div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-check mb-5">
+            <input type="checkbox" name="acceptTerms" ngModel #acceptTerms="ngModel" class="form-check-input" required 
+                          [ngClass]="{'is-invalid': f.submitted && acceptTerms.invalid}">
+            <label for="acceptTerms" class="form-check-label">Accept Terms & Conoditions </label>
+            <div *ngIf="acceptTerms.invalid && (acceptTerms?.dirty || acceptTerms?.touched || f.submitted)" class="invalid-feedback">
+              <div *ngIf="acceptTerms.errors?.['required']">Accept Ts & Cs is required.</div>
+            </div>
+          </div>
+          
+        <div class="bottom">
+          <input type="submit" value="submit" class="btn btn-primary">
+          <button class="btn btn-primary" >Submit</button>  -->
+          <!-- <button class="btn btn-secondary" type="reset">Reset</button>
+        </div>
+    </form>
+  </div>  -->
+
+
+
+

@@ -1,0 +1,35 @@
+<div class="container-fluid shadow-effect" id="admin-addItem-section">
+    <h1>Add Items Here.</h1>
+    
+        <form> 
+            <div class="row forgot-password">
+
+                <label for="itemName" class="form-label">Item name: </label>
+                <input type="text" name="itemName" [(ngModel)]="itemName"/>
+
+                <label for="description" class="form-label">Description: </label>
+                <input type="text" name="description" [(ngModel)]="description"/>
+
+                <label for="price" class="form-label">Price: </label>
+                <input type="text" name="price" [(ngModel)]="price"/>
+
+                <label for="gender" class="form-label">Category: </label>
+                <select id="dropdown" name="gender" [(ngModel)]="category">
+                    <option *ngFor="let item of getCategoryList" [value]="item?.value">{{item?.name}}</option>
+                </select>
+
+                <label for="itemName" class="form-label">Image: </label>
+                <input type="text" name="itemImage" [(ngModel)]="itemImage"/>
+           
+                
+                <div class="buttons">
+                    <button (click)="onAddItem()" >{{ isEdit ? 'Update' : 'Add Item'}}</button>
+                </div>
+               
+            </div>
+    
+        </form>
+
+        <!-- <img src="https://img.freepik.com/free-photo/cup-coffee-table-front-street-with-city-lights-background_188544-10293.jpg?ga=GA1.1.1704410369.1665916431&semt=ais_hybrid" alt="imge not load"> -->
+
+</div>

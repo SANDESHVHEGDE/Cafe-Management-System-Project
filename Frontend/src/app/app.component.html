@@ -1,0 +1,16 @@
+
+ <!-- <app-home *ngIf="!isLoggedIn && !isAdminLoggedIn "></app-home>  -->
+
+<app-user-home *ngIf="isLoggedIn && !isAdminLoggedIn "></app-user-home> 
+
+<app-admin-home *ngIf="!isLoggedIn && isAdminLoggedIn "></app-admin-home>  
+
+<!-- <app-admin-menulist></app-admin-menulist> -->
+<!-- <app-admin-orderlist></app-admin-orderlist> -->
+<!-- <app-my-order></app-my-order> -->
+<!-- <app-profile></app-profile> -->
+<router-outlet />
+
+<!-- //disable-elements [disable]=”’true’” -->
+<br>
+<app-footer></app-footer>

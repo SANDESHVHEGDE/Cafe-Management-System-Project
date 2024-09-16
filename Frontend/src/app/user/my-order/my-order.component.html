@@ -1,0 +1,58 @@
+<div class="container-fluid shadow-effect" id="user-section">
+    <h1 style="text-align: center;">My orders</h1>
+    
+      
+
+        <div class="container" *ngFor="let order of orders"> <hr>
+            <div class="contain-order-details">
+              <!-- Order Information -->
+              <div class="order-info">
+                <h1>Order ID: #{{ order.orderId }}</h1>
+                <p>Date: {{ order.orderDate | date }}</p>
+                <p>Status: <span [ngStyle]="{ 'color': order.orderStatus === 'Delivered' ? 'green' : 'red' }">
+                  {{ order.orderStatus }}
+                </span></p>
+                <p>Payment Status: {{ order.paymentStatus }}</p>
+              </div>
+          
+              <!-- Customer Information -->
+              <div class="section">
+                <h2>Customer Info</h2>
+                <p><strong>Name:</strong> {{ order.customer.firstName }} {{ order.customer.lastName }}</p>
+                <p><strong>Email:</strong> {{ order.customer.emailId }}</p>
+                <p><strong>Phone:</strong> {{ order.customer.phoneNo || 'N/A' }}</p>
+              </div>
+          
+              <!-- Product Details -->
+              <div class="section">
+                <h2>Products</h2>
+                <table class="product-list">
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Unit Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of order.items">
+                      <td>{{ item.itemName }}</td>
+                      <td>${{ item.price }}</td>
+                      <td>{{ item.quantity }}</td>
+                      <td>${{ item.price * item.quantity }}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3">Total Price:</td>
+                      <td>${{ order.totalPrice }}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div> 
+          </div>
+          <hr>
+        
+</div>

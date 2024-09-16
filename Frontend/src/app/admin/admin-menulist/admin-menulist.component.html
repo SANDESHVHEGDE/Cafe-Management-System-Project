@@ -1,0 +1,75 @@
+<div class="container-fluid shadow-effect" id="admin-menu-section">
+   
+    <!-- <div class="centered">
+        Select Cateogry : <select [(ngModel)]="category" (change)="getBookByCategory()">
+            <option [value]="100">All</option>
+            <option *ngFor="let item of getCategoryList" [value]="item?.value">{{item?.name}}</option>
+        </select>
+    </div>
+    <br />
+    <div *ngIf="bookList.length===0" class="centered">
+        No book is available in list
+    </div> -->
+ 
+    <div class="categories">
+        <h2 style="text-align: center;">Select your Category</h2>
+        
+        <div class="outterContainer" *ngIf="getCategoryList.length > 0; else noBooksTemplate">  
+  
+            <div class="container">
+                <div class="card" [value]="100" (click)="selectAllItems()">       
+                    <div class="card_image">
+                        <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="Item Image" />
+                    </div>
+                    <div class="card_title title-white">
+                        <p >All Item</p>
+                    </div>
+                </div>
+                <!-- Loop through the item list to create cards dynamically -->
+                <div class="card" *ngFor="let item of getCategoryList"  (click)="selectCategory(item.value)">        <!--[(ngModel)]="category"-->
+                    <div class="card_image">
+                        <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="Item Image" />
+                    </div>
+                    <div class="card_title title-white">
+                        <p >{{item?.name}}</p>
+                    </div>
+                </div>
+            </div>       
+        </div>
+        
+        <ng-template #noBooksTemplate>
+            <div class="centered">
+                No items are available in the list.
+            </div>
+        </ng-template>
+
+    </div>
+ 
+    
+
+    
+   <div class="items">
+        <div class="card2" *ngFor="let item of categoryItems;">
+            <div class="card3" *ngIf="categoryItems.length>0">
+                <div class="card-image2"><img [src]= "item.itemImage || 'pngwing.com (4).png'" alt="item image" accept="image/*"></div>
+                <div class="category2"> {{item.itemName}} </div>
+                <div class="heading2"> {{item.description}}</div>
+                <h6>Price: {{item.price}}</h6>
+                <button class="buttons" (click)="editItem(item)">Edit</button>&nbsp;
+                <button class="buttons" (click)="delItem(item)">Delete</button>
+            </div>
+        </div>
+
+    </div> 
+
+
+   
+  
+
+    <ng-template #noItemsTemplate>
+        <div class="centered">
+            No items available for the selected category.
+        </div>
+    </ng-template> 
+
+</div>

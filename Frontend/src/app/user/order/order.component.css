@@ -1,0 +1,55 @@
+.container-fluid {
+  width: 98%;
+  padding: 30px;
+  min-height: 670px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+
+.shadow-effect {
+  box-shadow: 14px 14px 20px #cfcece, -14px -14px 20px rgb(255, 255, 255);
+}
+
+
+
+.serachField>input{
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding-right: 8px;
+  box-shadow: 14px 14px 20px #d6e0e8, -14px -14px 20px #d1dde6;
+}
+
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+th,td{  
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+tr{
+  box-shadow: 14px 14px 20px #dad9d9, -14px -14px 20px #eff8ff;
+}
+
+table {
+  margin-top: 50px;
+  border-collapse: separate;
+  border-spacing: 10px 20px;
+}
+
+
+.buttons>button{
+  border-radius: 7px;
+  border: none;
+  padding: 4px;
+}

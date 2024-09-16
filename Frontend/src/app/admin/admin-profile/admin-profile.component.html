@@ -1,0 +1,52 @@
+<div class="container-fluid shadow-effect" id="admin-profile-section">
+    <h1 style="text-align: center;">Customer Profils</h1>
+   
+
+    <div class="centered">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>Phone Number</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>District</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+
+            <tr *ngFor="let customer of customers">
+                <td>{{customer?.firstName}}</td>
+                <td>{{customer?.lastName}}</td>
+                <td>{{customer?.dateOfBirth | date: 'MMM d, y'}}</td>
+                <td>{{customer?.phoneNo}}</td>
+                <td>{{customer?.gender}}</td>
+                <td>{{customer?.address}}</td>
+                <td>{{customer?.district}}</td>
+                <td>{{customer?.state}}</td>
+                <td>{{customer?.zipCode}}</td>
+                <td>{{customer?.emailId}}</td>
+
+                <!-- Role dropdown for updating the role -->
+                <td>
+                    <select [(ngModel)]="customer.role">
+                        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                    </select>
+                </td>
+
+                <!-- Button to update the customer -->
+                <td>
+                    <button (click)="updateCustomerRole(customer)" mat-raised-button color="primary">
+                        Update Role
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

@@ -1,0 +1,22 @@
+h1{
+    text-align: center;
+}
+.contain{
+    display: flex;
+    margin: 15px;
+    padding: 5px;
+    gap: 50px;
+}
+img{
+    float: right;
+    width: 40%;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+.shadow-effect{
+    box-shadow: 14px 14px 20px #919191, -14px -14px 20px rgb(240, 239, 239);
+  }
+
+p{
+    font-size: 20px;
+}
